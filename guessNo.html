@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+
+        height: 100vh;
+        background: linear-gradient(to right, #7f53ac, #657ced);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    .container {
+        background-color: white;
+        width: 50%;
+        min-width: 330px;
+        display: grid;
+        place-items: center;
+        border-radius: 7px;
+        padding: 50px 10px;
+        font-family: "poppins", sans-serif;
+        box-shadow: 0 0 10px black;
+    }
+
+    h3 {
+        font-size: 30px;
+        font-weight: 600;
+
+    }
+
+    p {
+        font-weight: 400;
+    }
+
+    input[type="text"] {
+        width: 90px;
+        /* height: 72px; */
+        border: 2px solid black;
+        border-radius: 5px;
+        font-size: 28px;
+        margin: 5% 0 1% 0;
+        font-weight: 600;
+        color: #7f53ac;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    button {
+        width: 140px;
+        padding: 13px 0;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+        background-color: #7f53ac;
+        margin-bottom: 30px;
+        border: none;
+        box-shadow: 2px 3px 3px #111111c3;
+    }
+    button:active{
+        background-color: rgb(255, 108, 108);
+    }
+    .faizu{
+        font-size: 20px;
+        color: white;
+        margin-top: 1%;
+        font-weight: 500;
+    }
+    @media only screen and (max-width:600px){
+        h3{
+            font-size: 25px;
+            margin-bottom: 4%;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h3>Guess a number Between 1-100.</h3>
+        <h3>Can you Guess it </h3>
+        <input type="text" placeholder="Num" id="guess"><br>
+        <button onclick="play()" id="my_btn">GUESS</button>
+        <p id="message1">No. of Guesss : 0</p>
+        <p id="message2">Guessed number are : none</p>
+        <p id="message3"></p>
+    </div>
+    <div class="faizu">
+        &copyFaizu @<span style="color:red">Web</span>Spyders 
+    </div>
+
+
+
+
+    <script>
+
+        //to generate random number 
+        var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        //getting the message attributes for display the content
+        var msg1 = document.getElementById("message1");
+        var msg2 = document.getElementById("message2");
+        var msg3 = document.getElementById("message3");
+
+        //to intialize the process 
+        var no_of_guess = 0;
+        var guess_num = [];
+
+        // button for function play 
+        const play = () => {
+            let user_guess = document.getElementById("guess").value;
+
+            //looping statement 
+            if (user_guess < 1 || user_guess > 100) {
+                alert("Please enter the number between 1-100 ")
+            }
+            else {
+                guess_num.push(user_guess);
+                no_of_guess += 1;
+                if (user_guess < randomNumber) {
+                msg1.textContent = "Your Guess is Too low";
+                msg2.textContent = "No Of Guesses:" + no_of_guess;
+                msg3.textContent = "Guessed Numbers Are " + guess_num;
+            }
+            else if (user_guess > randomNumber) {
+                msg1.textContent = "Your Guess is Too High"
+                msg2.textContent = "No Of Guesses : " + no_of_guess;
+                msg3.textContent = "Guessed Number Are: " + guess_num;
+            } else if (user_guess == randomNumber) {
+                msg1.textContent = "Yahhhh You won It!!"
+                msg2.textContent = "The Number was " + randomNumber; 
+                let result = 100 - no_of_guess;
+                msg3.textContent = "Your Score Is : " +(result);
+            }
+
+        }
+    };
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
